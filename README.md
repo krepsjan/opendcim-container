@@ -32,7 +32,7 @@ If you need to start a db:
 
     docker-compose -f docker-compose.yml -f docker-compose-db.yml up
 
-
+(IMPORTANT - without deleting install.php there is a improper redirection)
 After completing the install procedure, remove install.php file:
 
     docker exec -it opendcim_webapp_1 rm /var/www/dcim/install.php
@@ -75,6 +75,9 @@ it will populate an image cache to improve performance in cabinet rendering.**
 
 
 ## Restore DB
+
+Possible transfer of data from old place.
+What about pictures? 
 
     zcat dcim.sql.gz | docker exec -i opendcim_db_1 mysql -u root -pchangerootdbpwd dcim
 
