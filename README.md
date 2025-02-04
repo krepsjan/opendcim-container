@@ -73,6 +73,12 @@ Then restore your backup located in container under `/backup` dir into `/data/im
 **WARN: since version 18.01 this must be in place before launching DCIM for the first time, since 
 it will populate an image cache to improve performance in cabinet rendering.**
 
+## Backup DB
+
+docker-compose exec -i db mysqldump -u dcim -p dcim > dnms.dcim.export.sql
+
+Pripadne jeste doplnit do jmena zalohy datum
+Potom jeste zkopirovat obrazky, nebo proste pribalit cely adresar dcim_data a udelat zip
 
 ## Restore DB
 
