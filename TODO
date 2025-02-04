@@ -1,0 +1,4 @@
+# Vyresit
+- Ten pocatecni password, aby se neprepisoal default dcim v entrypoint.sh
+- Smazani install.php po instalaci
+- Nastaveni SAML autentikace

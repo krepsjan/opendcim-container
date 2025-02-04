@@ -24,20 +24,29 @@ if [ ! -f /.configured ] ; then
 	else
 		PASSWORD=dcim
 	fi
-	htpasswd -cb /data/opendcim.password dcim $PASSWORD
+
+	# Fix: if there is already modified opendcim.password, then do 
+	# not touch it, if not then create it with the default user/password
+	if [ ! -f /data/opendcim.password ] ; then
+	    htpasswd -cb /data/opendcim.password dcim $PASSWORD
+	fi
 
 	cd /var/www/dcim
 	for D in images pictures drawings ; do
 		if [ ! -d /data/$D ] ; then
 			mkdir /data/$D
 		fi
-
+		# tohle je spatne, udela je to jen pokud existuji
+		# ale ty images a drawings tam teprve nakopiruji
+		# zvenci, tazke tam na zacatku nejsou a kvuli tomuhle se ani nevytvori linky.
 		if [ -d /var/www/dcim/$D ] ; then
 			mv /var/www/dcim/$D/* /data/$D
 			rm -rf /var/www/dcim/$D
 			ln -s /data/$D .
 		fi
-
+		ln -s /data/pictures .
+		ln -s /data/drawings .
+		
 		chown www-data:www-data /data/$D
 	done
 

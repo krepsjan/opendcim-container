@@ -83,4 +83,6 @@ What about pictures?
 
     docker exec -it opendcim_db_1 mysql -u root -pchangerootdbpwd  dcim
 
+Ještě potrebuju, aby ty /data/images a /data/drawings se dostaly do správných cest ve zdrojáku
+aby do nich app mohla zapisovat.
 

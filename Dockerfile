@@ -70,6 +70,9 @@ COPY patches/misc.inc.php /var/www/dcim/
 # declaration of volumes 
 VOLUME ["/data"]
 
+# FIXME, tohle nejak nefugunguje, zatim neresim
+COPY opendcim.password /data/opendcim.password
+
 # init script as entrypoint for initial configuration
 COPY entrypoint.sh /usr/local/bin
 ENTRYPOINT ["sh", "/usr/local/bin/entrypoint.sh"]
